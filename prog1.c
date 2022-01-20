@@ -1,59 +1,60 @@
-
-#include<stdio.h>
+#include <stdio.h>
 void main()
 {
-    int a[50],b[50],c[100],i,j,m,n,temp,k;
-    printf("\n Enter the size of first array: ");
-    scanf("%d",&m);
-    printf("\n Enter the size of second array: ");
+    int a[25],b[25],c[50],i,j,n,m,k,l;
+    printf("Enter the total number of elements in 1st array: ");
     scanf("%d",&n);
-    printf("\n Enter the first sorted array: ");
-    for(i=0;i<m;i++)
+    printf("Enter the total number of elements in 2nd array: ");
+    scanf("%d",&m);
+    printf("Enter the elements of 1st sorted array: ");
+    for(i=0;i<n;i++)
     {
         scanf("%d",&a[i]);
     }
-    printf("\n Enter the second sorted array: ");
-    for(i=0;i<n;i++)
+    printf("\n Enter the elements of 2nd sorted array: ");
+    for(i=0;i<m;i++)
     {
         scanf("%d",&b[i]);
     }
-    i=0;
-    j=0;
-    while(i<m&&j<n)
+
+    i=0,j=0,k=0;
+    while(i<n && j<m)
     {
-        if(a[i]<b[j])
+        if(a[i]>b[j])
+        {
+            c[k]=b[j];
+            j++;
+        }
+        else
         {
             c[k]=a[i];
             i++;
         }
-        else
-        {
-            c[k]=b[i];
-            j++;
-        }
+
         k++;
     }
-    if(i>=m)
+    if(i>=n)
     {
-        while(j<n)
+        while(j<m)
         {
             c[k]=b[j];
             j++;
             k++;
         }
     }
-    if(j>=n)
+    else if(j>=m)
     {
-        while(i<m)
+        while(i<n)
         {
             c[k]=a[i];
             i++;
             k++;
         }
     }
-printf("\n Merged form of given two array is: ");
-    for(i=0;i<k;i++)
+    printf("\n Resultant: ");
+    for(k=0;k<n+m;k++)
     {
-        printf("%d",c[i]);
+        printf("%d,",c[k]);
     }
+
 }
